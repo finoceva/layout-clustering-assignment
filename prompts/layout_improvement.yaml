@@ -1,0 +1,164 @@
+# Layout Improvement Recommendation Prompts
+
+system_prompt: |
+  You are an expert layout design consultant with deep knowledge of visual design principles, 
+  user experience, and layout optimization. Your task is to provide actionable, specific 
+  recommendations to improve layout quality based on statistical analysis and design principles.
+
+base_recommendation_prompt: |
+  ## LAYOUT ANALYSIS REQUEST
+  
+  You have been provided with a layout that has been flagged as needing improvement. 
+  Based on statistical analysis of similar layouts, I have identified the key area for improvement.
+  
+  ### STATISTICAL ANALYSIS
+  - **Key Problem Area**: {feature_name}
+  - **Current Value**: {current_value:.3f}
+  - **Target Value**: {target_value:.3f} 
+  - **Improvement Direction**: {improvement_direction}
+  - **Statistical Significance**: p-value = {p_value:.4f}
+  - **Effect Size**: {effect_size:.3f} (Cohen's d)
+  - **Sample Size**: {sample_size} layouts analyzed
+  - **Confidence Level**: {confidence_level}
+
+  {layout_structure}
+
+  {improvement_strategies}
+
+  ### DESIGN PRINCIPLES CONTEXT
+  {design_principles_context}
+
+  ## TASK
+  Provide a specific, actionable recommendation to improve this layout's {feature_name}.
+  Focus on concrete spatial adjustments, element positioning, or sizing changes that the designer can implement immediately.
+
+  ## REQUIREMENTS
+  1. **Be Specific**: Give exact positioning, sizing, or spacing suggestions
+  2. **Be Practical**: Ensure recommendations are implementable with basic design tools
+  3. **Reference the Data**: Use the current layout structure in your analysis
+  4. **Focus on Impact**: Prioritize changes that will have the greatest visual improvement
+  5. **Avoid Tool Mentions**: Don't suggest specific design software or tools
+  6. **Be Concise**: Keep recommendations clear and actionable (2-3 sentences max)
+
+layout_structure_template: |
+  ### CURRENT LAYOUT STRUCTURE
+  - **Canvas**: {canvas_width} × {canvas_height} pixels
+  - **Elements**: {element_count} total elements
+  - **Element Types**: {element_types}
+  - **Content Bounds**: ({content_left}, {content_top}) to ({content_right}, {content_bottom})
+  - **Margins**: Left: {margin_left}px, Right: {margin_right}px, Top: {margin_top}px, Bottom: {margin_bottom}px
+  - **Unique Positions**: {unique_x_positions} X-coordinates, {unique_y_positions} Y-coordinates
+  - **Element Sizes**: {unique_element_sizes} different sizes used
+
+  **Element Details**:
+  {element_details}
+
+improvement_strategies_template: |
+  ### IMPROVEMENT STRATEGIES
+  **Common issues with {feature_name}:**
+  {common_issues}
+  
+  **Potential spatial adjustments:**
+  {spatial_adjustments}
+  
+  **Expected impact:**
+  {expected_impact}
+
+# Feature-specific improvement strategies
+feature_strategies:
+  edge_alignment_score:
+    common_issues: |
+      - Elements positioned arbitrarily without alignment to common edges
+      - Lack of invisible grid structure
+      - Mixed alignment patterns creating visual chaos
+    spatial_adjustments: |
+      - Align element edges to create visual columns/rows
+      - Establish consistent left/right margins for text elements
+      - Use element edges as guides for positioning other elements
+    expected_impact: |
+      - Creates visual order and professionalism
+      - Improves scanning efficiency
+      - Reduces cognitive load for viewers
+
+  balance_score:
+    common_issues: |
+      - Visual weight concentrated on one side of the layout
+      - Large elements overwhelming smaller content
+      - Uneven distribution creating instability
+    spatial_adjustments: |
+      - Move heavier elements closer to center
+      - Distribute large elements across left/right sides
+      - Use white space to balance dense content areas
+    expected_impact: |
+      - Creates visual stability and harmony
+      - Improves overall aesthetic appeal
+      - Guides eye movement naturally through content
+
+  reading_flow_score:
+    common_issues: |
+      - Elements break natural top-to-bottom, left-to-right reading pattern
+      - Important content placed in unexpected locations
+      - Conflicting visual hierarchies disrupting flow
+    spatial_adjustments: |
+      - Position primary content in top-left region
+      - Arrange elements to follow Z-pattern or F-pattern
+      - Ensure logical progression from headers to body content
+    expected_impact: |
+      - Improves content comprehension
+      - Reduces user confusion and scanning time
+      - Increases engagement with content
+
+  whitespace_ratio:
+    common_issues: |
+      - Content cramped together reducing readability
+      - Insufficient breathing room around elements
+      - Poor content-to-space ratio
+    spatial_adjustments: |
+      - Increase margins between elements
+      - Add padding around text blocks
+      - Consider removing or consolidating less important elements
+    expected_impact: |
+      - Improves readability and focus
+      - Creates premium, professional appearance
+      - Reduces visual overwhelm
+
+  size_hierarchy:
+    common_issues: |
+      - Similar element sizes creating flat visual hierarchy
+      - Most important content not sufficiently emphasized
+      - Lack of clear entry point for viewers
+    spatial_adjustments: |
+      - Increase size of primary headline/focal element
+      - Create clear size relationships between content levels
+      - Ensure supporting elements are appropriately smaller
+    expected_impact: |
+      - Establishes clear information hierarchy
+      - Guides attention to most important content first
+      - Improves content prioritization and comprehension
+
+# Design principles context by feature
+design_principles:
+  edge_alignment_score:
+    - "Alignment creates unity and cohesion in design"
+    - "Invisible grid structures provide visual order"
+    - "Consistent edge relationships improve professionalism"
+  
+  balance_score:
+    - "Visual balance creates stability and harmony"
+    - "Symmetrical and asymmetrical balance both have their place"
+    - "Weight distribution affects emotional response to design"
+  
+  reading_flow_score:
+    - "Western reading patterns follow Z and F shapes"
+    - "Eye movement should be guided, not forced"
+    - "Primary content should be easily discoverable"
+  
+  whitespace_ratio:
+    - "White space is not wasted space—it's a design element"
+    - "Proper spacing improves readability and comprehension"
+    - "Breathing room creates premium perception"
+  
+  size_hierarchy:
+    - "Size creates visual importance and information hierarchy"
+    - "Contrast in scale draws attention effectively"
+    - "Clear hierarchy improves information processing"
