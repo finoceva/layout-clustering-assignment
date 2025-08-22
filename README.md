@@ -20,12 +20,7 @@ A layout analysis system using **Two-Track Approach** for structural similarity 
    python main.py
    ```
 
-4. **Try the demo:**
-   ```bash
-   python demo.py
-   ```
-
-5. **Run optimization pipeline:**
+4. **Run optimization pipeline:**
    ```bash
    python run_pipeline.py  # Full clustering optimization + recommendations
    ```
@@ -214,19 +209,14 @@ The integrated recommendation system combines both tracks:
 Based on comprehensive testing with the 90-layout dataset:
 
 ### **Clustering Performance**
-- **Baseline Clustering**: ~0.6-0.7 silhouette score, ~0.62 quality purity
-- **Structural Clustering**: ~0.9+ silhouette score, ~0.62 quality purity
+- **Baseline Clustering**: ~0.2 silhouette score, ~0.62 quality purity
+- **Structural Clustering**: ~0.5+ silhouette score, ~0.62 quality purity
 - **Flexible Framework**: Supports multiple embedding models and algorithms
 
 ### **Quality Analysis**
 - **Statistical Significance**: 3-6 features with p < 0.05
 - **Top Predictors**: `edge_alignment_score`, `balance_score`, `center_of_mass_y`
 - **Effect Sizes**: Large effects (Cohen's d > 0.8) for key quality features
-
-### **Recommendation Quality**
-- **Real OpenAI Responses**: Authentic LLM recommendations
-- **Feature-Specific**: Tailored advice based on statistical analysis
-- **Actionable**: Concrete spatial adjustments and positioning guidance
 
 ## 🧪 **Usage Examples**
 
