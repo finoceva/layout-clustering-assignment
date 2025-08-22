@@ -96,26 +96,6 @@ final_submission/ (20 items - cleaned up from 35+ files)
     └── pipeline_summary.json                   # High-level performance metrics
 ```
 
-### **🧹 Cleaned Up Files**
-**Removed 17 redundant files** including duplicate documentation, test files, and configuration files:
-- 8 redundant markdown documentation files
-- 6 duplicate demo/test files
-- 3 duplicate configuration files (`requirements.txt` → `pyproject.toml`)
-
-### **🎯 Flexible Clustering (`clustering/flexible.py`)**
-**Purpose**: Automated hyperparameter optimization for structural clustering
-
-**What it does**:
-1. **Configuration Generation**: Creates combinations of embedding models, dimensionality reduction methods, and clustering algorithms
-2. **Automated Testing**: Tests each configuration and measures silhouette score, quality purity, and balance
-3. **Best Configuration Selection**: Finds optimal combination automatically
-
-**Why it's needed**:
-- **Eliminates manual tuning**: 100+ possible parameter combinations
-- **Objective comparison**: Removes human bias in method selection
-- **Reproducible results**: Same data → same best configuration
-- **Saves time**: Automated vs. weeks of manual testing
-
 ```python
 # Instead of manually testing dozens of combinations...
 results = run_flexible_clustering(layouts, max_combinations=20)
