@@ -33,8 +33,6 @@ A layout analysis system using **Two-Track Approach** for structural similarity 
 final_submission/ (20 items - cleaned up from 35+ files)
 ├── README.md                  # 📚 Comprehensive documentation (you're reading it!)
 ├── SETUP.md                   # 🚀 Quick start guide
-├── main.py                    # 🏃 Main entry point
-├── demo.py                    # 🎯 Unified demonstration script
 ├── run_pipeline.py            # 🔄 Full pipeline optimization runner
 ├── env.example                # ⚙️ Environment configuration template
 ├── pyproject.toml             # 📦 Project configuration & dependencies
