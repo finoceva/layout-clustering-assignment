@@ -6,19 +6,13 @@ from typing import List
 
 import pytest
 
-from core.schemas import Element, Layout  # type: ignore
+from core.schemas import Element, Layout
 
 
 @pytest.fixture
 def sample_element() -> Element:
     """Create a sample element for testing."""
-    return Element(
-        element_class="headline",
-        x=100,
-        y=50,
-        width=300,
-        height=50
-    )
+    return Element(element_class="headline", x=100, y=50, width=300, height=50)
 
 
 @pytest.fixture
@@ -36,33 +30,21 @@ def sample_elements() -> List[Element]:
 def sample_layout(sample_elements: List[Element]) -> Layout:
     """Create a sample layout for testing."""
     return Layout(
-        id="test_layout_001",
-        width=600,
-        height=400,
-        group_id="test_group",
-        elements=sample_elements,
-        quality="pass"
+        id="test_layout_001", width=600, height=400, group_id="test_group", elements=sample_elements, quality="pass"
     )
 
 
 @pytest.fixture
 def empty_layout() -> Layout:
     """Create an empty layout for testing edge cases."""
-    return Layout(
-        id="empty_layout",
-        width=800,
-        height=600,
-        group_id="empty_group",
-        elements=[],
-        quality="fail"
-    )
+    return Layout(id="empty_layout", width=800, height=600, group_id="empty_group", elements=[], quality="fail")
 
 
 @pytest.fixture
 def multiple_layouts(sample_elements: List[Element]) -> List[Layout]:
     """Create multiple layouts for clustering tests."""
     layouts = []
-    
+
     # Create variations of the base layout
     for i in range(5):
         layout = Layout(
@@ -71,8 +53,8 @@ def multiple_layouts(sample_elements: List[Element]) -> List[Layout]:
             height=400 + i * 30,
             group_id=f"group_{i}",
             elements=sample_elements.copy(),
-            quality="pass" if i % 2 == 0 else "fail"
+            quality="pass" if i % 2 == 0 else "fail",
         )
         layouts.append(layout)
-    
+
     return layouts

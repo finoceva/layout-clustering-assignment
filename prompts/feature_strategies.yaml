@@ -1,0 +1,69 @@
+edge_alignment_score:
+  common_issues: |
+    - Elements positioned arbitrarily without alignment to common edges
+    - Lack of invisible grid structure
+    - Mixed alignment patterns creating visual chaos
+  spatial_adjustments: |
+    - Align element edges to create visual columns/rows
+    - Establish consistent left/right margins for text elements
+    - Use element edges as guides for positioning other elements
+  expected_impact: |
+    - Creates visual order and professionalism
+    - Improves scanning efficiency
+    - Reduces cognitive load for viewers
+
+balance_score:
+  common_issues: |
+    - Visual weight concentrated on one side of the layout
+    - Large elements overwhelming smaller content
+    - Uneven distribution creating instability
+  spatial_adjustments: |
+    - Move heavier elements closer to center
+    - Distribute large elements across left/right sides
+    - Use white space to balance dense content areas
+  expected_impact: |
+    - Creates visual stability and harmony
+    - Improves overall aesthetic appeal
+    - Guides eye movement naturally through content
+
+reading_flow_score:
+  common_issues: |
+    - Elements break natural top-to-bottom, left-to-right reading pattern
+    - Important content placed in unexpected locations
+    - Conflicting visual hierarchies disrupting flow
+  spatial_adjustments: |
+    - Position primary content in top-left region
+    - Arrange elements to follow Z-pattern or F-pattern
+    - Ensure logical progression from headers to body content
+  expected_impact: |
+    - Improves content comprehension
+    - Reduces user confusion and scanning time
+    - Increases engagement with content
+
+whitespace_ratio:
+  common_issues: |
+    - Content cramped together reducing readability
+    - Insufficient breathing room around elements
+    - Poor content-to-space ratio
+  spatial_adjustments: |
+    - Increase margins between elements
+    - Add padding around text blocks
+    - Consider removing or consolidating less important elements
+  expected_impact: |
+    - Improves readability and focus
+    - Creates premium, professional appearance
+    - Reduces visual overwhelm
+
+size_hierarchy:
+  common_issues: |
+    - Similar element sizes creating flat visual hierarchy
+    - Most important content not sufficiently emphasized
+    - Lack of clear entry point for viewers
+  spatial_adjustments: |
+    - Increase size of primary headline/focal element
+    - Create clear size relationships between content levels
+    - Ensure supporting elements are appropriately smaller
+  expected_impact: |
+    - Establishes clear information hierarchy
+    - Guides attention to most important content first
+    - Improves content prioritization and comprehension

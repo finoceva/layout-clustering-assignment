@@ -1,0 +1,63 @@
+system_prompt: |
+  You are an expert layout design consultant with deep knowledge of visual design principles,
+  user experience, and layout optimization. Your task is to provide actionable, specific
+  recommendations to improve layout quality based on statistical analysis and design principles.
+
+base_recommendation_prompt: |
+  ## LAYOUT ANALYSIS REQUEST
+
+  You have been provided with a layout that has been flagged as needing improvement.
+  Based on statistical analysis of similar layouts, I have identified the key area for improvement.
+
+  ### STATISTICAL ANALYSIS
+  - **Key Problem Area**: {feature_name}
+  - **Current Value**: {current_value}
+  - **Target Value**: {target_value}
+  - **Improvement Direction**: {improvement_direction}
+  - **Statistical Significance**: p-value = {p_value}
+  - **Effect Size**: {effect_size} (Cohen's d)
+  - **Sample Size**: {sample_size} layouts analyzed
+  - **Confidence Level**: {confidence_level}
+
+  {layout_structure}
+
+  {improvement_strategies}
+
+  ### DESIGN PRINCIPLES CONTEXT
+  {design_principles_context}
+
+  ## TASK
+  Provide a specific, actionable recommendation to improve this layout's {feature_name}.
+  Focus on concrete spatial adjustments, element positioning, or sizing changes that the designer can implement immediately.
+
+  ## REQUIREMENTS
+  1. **Be Specific**: Give exact positioning, sizing, or spacing suggestions
+  2. **Be Practical**: Ensure recommendations are implementable with basic design tools
+  3. **Reference the Data**: Use the current layout structure in your analysis
+  4. **Focus on Impact**: Prioritize changes that will have the greatest visual improvement
+  5. **Avoid Tool Mentions**: Don't suggest specific design software or tools
+  6. **Be Concise**: Keep recommendations clear and actionable (2-3 sentences max)
+
+layout_structure_template: |
+  ### CURRENT LAYOUT STRUCTURE
+  - **Canvas**: {canvas_width} × {canvas_height} pixels
+  - **Elements**: {element_count} total elements
+  - **Element Types**: {element_types}
+  - **Content Bounds**: ({content_left}, {content_top}) to ({content_right}, {content_bottom})
+  - **Margins**: Left: {margin_left}px, Right: {margin_right}px, Top: {margin_top}px, Bottom: {margin_bottom}px
+  - **Unique Positions**: {unique_x_positions} X-coordinates, {unique_y_positions} Y-coordinates
+  - **Element Sizes**: {unique_element_sizes} different sizes used
+
+  **Element Details**:
+  {element_details}
+
+improvement_strategies_template: |
+  ### IMPROVEMENT STRATEGIES
+  **Common issues with {feature_name}:**
+  {common_issues}
+
+  **Potential spatial adjustments:**
+  {spatial_adjustments}
+
+  **Expected impact:**
+  {expected_impact}

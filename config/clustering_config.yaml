@@ -1,0 +1,60 @@
+# Structural Clustering Configuration
+
+# Available embedding models
+embedding_models:
+  layoutlmv1:
+    model_name: "microsoft/layoutlm-base-uncased"
+    description: "LayoutLM v1 - Original layout understanding model"
+    pooling_methods: ["cls", "mean", "max"]
+    default_pooling: "cls"
+
+  layoutlmv3:
+    model_name: "microsoft/layoutlmv3-base"
+    description: "LayoutLM v3 - Advanced multimodal layout model"
+    pooling_methods: ["cls", "mean", "max"]
+    default_pooling: "cls"
+
+# Dimensionality reduction options
+dimensionality_reduction:
+  pca:
+    description: "Principal Component Analysis - Linear reduction"
+    parameters:
+      n_components: [10, 20, 30, 50]  # 10 is optimal for this dataset
+      random_state: 42
+
+  umap:
+    description: "Uniform Manifold Approximation - Non-linear reduction"
+    parameters:
+      n_components: [10, 20, 30]
+      n_neighbors: [5, 15, 30]
+      min_dist: [0.1, 0.3, 0.5]
+      random_state: 42
+
+# Clustering algorithms
+clustering_algorithms:
+  kmeans:
+    description: "K-Means clustering - Centroid-based"
+    parameters:
+      n_clusters: [2, 3, 4, 5, 6, 7, 8]  # 2 is optimal for this dataset
+      random_state: 42
+      n_init: 10
+
+  hdbscan:
+    description: "HDBSCAN - Density-based hierarchical clustering"
+    parameters:
+      min_cluster_size: [5, 8, 10, 15]
+      min_samples: [3, 5]
+      cluster_selection_epsilon: [0.0, 0.1, 0.2]
+
+# Default configuration for quick runs
+default_config:
+  embedding_model: "layoutlmv3"
+  pooling_method: "cls"
+  dimensionality_reduction: "pca"
+  clustering_algorithm: "kmeans"
+
+# Optimization settings
+optimization:
+  max_combinations: 50  # Limit total combinations to test
+  evaluation_metrics: ["silhouette", "quality_purity", "balance_score"]
+  primary_metric: "silhouette"  # Primary metric for ranking

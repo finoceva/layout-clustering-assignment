@@ -1,0 +1,108 @@
+# Layout Recommendation Engine Configuration
+
+# OpenAI LLM Configuration
+openai:
+  # Model configuration
+  model: "gpt-4.1-mini"  # Available: gpt-3.5-turbo, gpt-4, gpt-4o, gpt-4.1-mini
+  temperature: 0.7      # Randomness (0.0-2.0): 0=deterministic, 2=very creative
+  max_tokens: 300       # Maximum response length
+
+# Training Configuration
+training:
+  # Path to clustering configuration (used during training)
+  clustering_config_path: "config/clustering_config.yaml"
+
+  # Maximum number of quality issues to enhance with detailed LLM recommendations
+  # (Only the most impactful issues get expensive LLM calls)
+  max_llm_enhanced_issues: 2
+
+  # Minimum Cohen's d effect size threshold for LLM enhancement
+  # (0.2=small, 0.5=medium, 0.8=large effect). Only statistically significant
+  # features with medium+ effect size get enhanced LLM recommendations
+  min_effect_size_for_llm_enhancement: 0.5
+
+# Prompt Configuration
+prompts:
+  # Base prompts directory
+  prompts_dir: "prompts"
+
+  # Specific prompt files
+  base_prompt_file: "base_prompt.yaml"
+  feature_strategies_file: "feature_strategies.yaml"
+  design_principles_file: "design_principles.yaml"
+
+  # Prompt behavior settings
+  include_statistical_context: true
+  include_layout_structure: true
+  include_improvement_strategies: true
+  include_design_principles: true
+
+# Recommendation Behavior
+recommendation:
+  # Similar layouts (Track 1: Structural Clustering)
+  # Maximum number of structurally similar layouts to return as examples
+  # (Helps users see alternative layouts with similar visual structure)
+  max_similar_layouts: 3
+
+  # Quality analysis (Track 2: Statistical Analysis)
+  # Maximum number of quality issues to analyze and report
+  # (Prevents overwhelming users with too many improvement suggestions)
+  max_quality_issues: 5
+
+  # Statistical significance threshold (p-value) for quality features
+  # Only features below this threshold are considered meaningful
+  min_significance_level: 0.05
+
+  # Scoring and ranking
+  similarity_score_method: "cluster_based"  # Options: cluster_based, embedding_distance
+  quality_score_weights:
+    statistical_significance: 0.4  # Weight for p-value
+    effect_size: 0.6              # Weight for Cohen's d
+
+  # Clustering evaluation weights (how to combine different metrics)
+  clustering_evaluation_weights:
+    silhouette_score: 0.3    # Structural coherence within clusters
+    quality_purity: 0.4      # How well clusters separate pass/fail layouts
+    balance_score: 0.3       # Preference for balanced cluster sizes
+
+# Logging and Output
+logging:
+  # Log levels: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+
+  # Include token usage information
+  log_token_usage: true
+
+  # Log full prompts for debugging
+  log_full_prompts: false
+
+# Performance Settings
+performance:
+  # Cache embeddings to avoid recomputation
+  cache_embeddings: true
+
+  # Batch size for processing multiple layouts
+  batch_size: 10
+
+  # Timeout for OpenAI API calls (seconds)
+  api_timeout: 30
+
+# Development/Testing Settings
+development:
+  # Enable debug mode with detailed logging
+  debug_mode: false
+
+  # Use mock LLM responses for testing (when no API key)
+  enable_mock_responses: false
+
+  # Validate configuration on startup
+  validate_config: true
+
+# Default Configuration (for quick setup)
+default_config:
+  model: "gpt-4.1-mini"
+  temperature: 0.7
+  max_tokens: 300
+  max_similar_layouts: 3
+  max_quality_issues: 5
+  max_llm_enhanced_issues: 2
