@@ -5,7 +5,7 @@ Combines structural clustering and quality analysis for actionable recommendatio
 
 import os
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 from analysis.quality import run_quality_analysis
 from clustering.structural import run_structural_clustering
@@ -332,7 +332,9 @@ class LayoutRecommendationEngine:
                 temperature=self.temperature,  # Configurable temperature
             )
 
-            recommendation = response.choices[0].message.content.strip() if response.choices[0].message.content else ""
+            recommendation: str = (
+                response.choices[0].message.content.strip() if response.choices[0].message.content else ""
+            )
             logger.info(f"✅ OpenAI recommendation generated for {feature_name}")
 
             # Log token usage if configured
@@ -445,7 +447,7 @@ class LayoutRecommendationEngine:
             raise
 
 
-def failed_layout_recommendations(data_path: str | Path, n_layouts: int | None = None) -> None:
+def failed_layout_recommendations(data_path: Union[str, Path], n_layouts: Optional[int] = None) -> None:
     """
     Test the recommendation system on fail layouts.
 
@@ -478,14 +480,14 @@ def failed_layout_recommendations(data_path: str | Path, n_layouts: int | None =
     if n_layouts is not None:
         fail_layouts = fail_layouts[:n_layouts]
         logger.info(
-            f"Testing on first {len(fail_layouts)} fail layouts (out of {len([l for l in layouts if l.quality == 'fail'])} total)"
+            f"Testing on first {len(fail_layouts)} fail layouts (out of {len([layout for layout in layouts if layout.quality == 'fail'])} total)"
         )
     else:
         logger.info(f"Testing on all {len(fail_layouts)} fail layouts")
 
     for i, layout in enumerate(fail_layouts, 1):
         logger.info(f"\n--- Testing layout {i}/{len(fail_layouts)} ---")
-        recommendation = recommender.generate_recommendation(layout)
+        recommender.generate_recommendation(layout)
         logger.info("-" * 50)
 
     logger.info("✅ Recommendation system test complete!")
