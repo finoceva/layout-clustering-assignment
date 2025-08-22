@@ -84,6 +84,10 @@ final_submission/ (20 items - cleaned up from 35+ files)
 │   ├── evaluation.py              # Clustering evaluation metrics
 │   └── logger.py                  # Loguru logging configuration
 │
+├── notebooks/                 # 📓 Analysis & VLM demonstrations
+│   ├── clustering_comparison_analysis.ipynb   # Comprehensive clustering experiments
+│   └── clustering_and_llm_recommendations.ipynb # VLM visual layout generation
+│
 ├── tests/                     # 🧪 Test suite
 │   ├── test_features.py           # Feature extraction tests
 │   └── test_evaluation.py         # Evaluation tests
@@ -94,13 +98,6 @@ final_submission/ (20 items - cleaned up from 35+ files)
     ├── clustering_optimization_results.json    # Optimization experiment results
     ├── recommendation_results.json             # Generated recommendations
     └── pipeline_summary.json                   # High-level performance metrics
-```
-
-```python
-# Instead of manually testing dozens of combinations...
-results = run_flexible_clustering(layouts, max_combinations=20)
-best_config = results["best_result"]["config"]
-# → Automatically finds: LayoutLMv3 + PCA(n=15) + K-means(k=5)
 ```
 
 ## 🎯 **Two-Track Approach**
@@ -191,6 +188,7 @@ The integrated recommendation system combines both tracks:
 2. **OpenAI Integration**: Real LLM calls with configurable models and parameters
 3. **YAML Prompts**: Structured prompt system with feature-specific strategies
 4. **Statistical Backing**: Recommendations based on statistical analysis
+5. **VLM Visual Improvements**: VLM generates actual layout coordinates from visual analysis
 
 ### **Example Recommendation Output**
 ```
@@ -226,7 +224,7 @@ Based on comprehensive testing with the 90-layout dataset:
 - **Effect Sizes**: Large effects (Cohen's d > 0.8) for key quality features
 
 ### **Recommendation Quality**
-- **Real OpenAI Responses**: Authentic LLM recommendations (no fallbacks)
+- **Real OpenAI Responses**: Authentic LLM recommendations
 - **Feature-Specific**: Tailored advice based on statistical analysis
 - **Actionable**: Concrete spatial adjustments and positioning guidance
 
@@ -291,22 +289,12 @@ pytest tests/test_evaluation.py
 
 ## 🌟 **Key Features**
 
-### **Production-Ready Architecture**
-- ✅ Complete type annotations with mypy validation
-- ✅ Comprehensive test suite with pytest
-- ✅ Professional logging with loguru
-- ✅ Clean imports and proper Python packaging
-- ✅ YAML-based configuration system
-- ✅ Zero code duplication
-- ✅ Mathematical documentation
-
 ### **Flexible Configuration**
 - ✅ YAML configuration files for all settings
 - ✅ Environment variable overrides for deployment
 - ✅ Configuration validation on startup
-- ✅ No hardcoded values in source code
 
-### **Advanced AI Integration**
+### **AI Integration**
 - ✅ Real OpenAI API integration (gpt-4.1-mini, gpt-4, etc.)
 - ✅ Configurable model parameters (temperature, max_tokens)
 - ✅ YAML-based prompt system with feature strategies
@@ -326,67 +314,6 @@ Core requirements managed via `pyproject.toml`:
 - **AI Integration**: `openai` (for GPT models)
 - **Utilities**: `loguru` (logging), `pyyaml` (configuration)
 - **Testing**: `pytest`, `pytest-cov`
-
-## ✅ **System Verification**
-
-**All core functionality working and validated:**
-
-- ✅ **Configuration system**: `RecommendationConfigManager().validate_config() = True`
-- ✅ **OpenAI integration**: Real API calls with configurable models (no fallbacks)
-- ✅ **Clustering performance**: 0.9+ silhouette scores with LayoutLMv3
-- ✅ **Statistical analysis**: 3-6 significant features with p < 0.05
-- ✅ **Type checking**: Zero mypy errors with comprehensive annotations
-- ✅ **Test coverage**: Full pytest suite with evaluation and feature tests
-- ✅ **Clean architecture**: 20 essential files (down from 35+ redundant files)
-
-**Cost vs. Quality Trade-offs:**
-- **LLM calls**: Only on high-impact issues (effect size ≥ 0.5)
-- **Similar layouts**: Limited to 3 to prevent cognitive overload
-- **Quality issues**: Top 5 most significant for actionable recommendations
-- **Automated optimization**: Finds best hyperparameters without manual tuning
-
-## 🧪 **Pipeline Verification Results** (Latest Run)
-
-**Full End-to-End Pipeline Execution**
-
-### **📊 Clustering Optimization Results**
-```yaml
-✅ Configurations Tested: 8 key combinations
-✅ Best Method: LayoutLMv1 + PCA (10 components) + KMeans (3 clusters)
-✅ Best Metrics:
-  - Silhouette Score: 0.222 (good cluster coherence)
-  - Quality Purity: 0.622 (decent pass/fail separation)
-  - Combined Score: 0.564 (excellent overall performance)
-  - Clusters Found: 3 (clean, interpretable grouping)
-```
-
-### **🎯 Recommendation System Results**
-```yaml
-✅ Track 1 (Structural Similarity): 100% success rate
-  - Finds 3 similar layouts per failed layout
-  - Provides both pass/fail examples for learning
-
-✅ Track 2 (Quality Analysis): 100% success rate
-  - Identifies 6 statistically significant features
-  - Top predictor: edge_alignment_score (effect size: 1.041 - LARGE!)
-  - Provides specific improvement targets
-
-✅ LLM Enhancement: 100% success rate
-  - OpenAI API integration working perfectly
-  - Configurable model (gpt-4.1-mini), temperature (0.7)
-  - No fallback logic - robust error handling
-```
-
-### **📁 Generated Results**
-- `results/clustering_optimization_results.json` - All 8 configurations tested
-- `results/recommendation_results.json` - 8 comprehensive recommendations
-- `results/pipeline_summary.json` - High-level performance metrics
-
-### **🔧 System Reliability**
-- **Configuration**: 100% YAML-driven (zero hardcoded values)
-- **Error Handling**: Robust with proper API failure management
-- **Performance**: 8 clustering configs tested in ~5 minutes
-- **Success Rate**: 8/8 recommendations generated successfully
 
 ## 🚀 **Getting Started**
 
