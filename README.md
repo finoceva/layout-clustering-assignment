@@ -30,7 +30,7 @@ A layout analysis system using **Two-Track Approach** for structural similarity 
 **Clean, organized architecture with minimal documentation files:**
 
 ```
-final_submission/ (20 items - cleaned up from 35+ files)
+final_submission/ 
 ├── README.md                  # 📚 Comprehensive documentation (you're reading it!)
 ├── SETUP.md                   # 🚀 Quick start guide
 ├── run_pipeline.py            # 🔄 Full pipeline optimization runner
