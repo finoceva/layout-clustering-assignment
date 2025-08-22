@@ -1,6 +1,6 @@
 # Layout Clustering & Recommendation System
 
-A comprehensive layout analysis system using **Two-Track Approach** for structural similarity and quality analysis, with OpenAI-powered recommendations.
+A layout analysis system using **Two-Track Approach** for structural similarity and quality analysis, with OpenAI-powered recommendations.
 
 ## 🚀 **Quick Start**
 
