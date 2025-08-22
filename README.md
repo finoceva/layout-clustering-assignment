@@ -27,8 +27,6 @@ A layout analysis system using **Two-Track Approach** for structural similarity 
 
 ## 📁 **Project Structure**
 
-**Clean, organized architecture with minimal documentation files:**
-
 ```
 final_submission/ 
 ├── README.md                  # 📚 Comprehensive documentation (you're reading it!)
