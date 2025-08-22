@@ -9,11 +9,8 @@
 
 1. **Install dependencies:**
    ```bash
-   # Using uv (recommended)
+   # Using uv 
    uv sync
-
-   # Or using pip
-   pip install -r requirements.txt
    ```
 
 2. **Configure OpenAI API:**
@@ -29,18 +26,6 @@
    ```bash
    python -c "import recommendation.engine; print('✅ Installation successful')"
    ```
-
-## 🎯 **Usage**
-
-### **Complete Analysis**
-```bash
-python main.py
-```
-
-### **Interactive Demo**
-```bash
-python demo.py
-```
 
 ### **Configuration**
 - **Default settings**: `config/recommendation_config.yaml`
@@ -61,9 +46,7 @@ pytest
 
 ## 📁 **Key Files**
 
-- `main.py` - Main entry point
-- `demo.py` - Interactive demonstration
-- `config/recommendation_config.yaml` - Main configuration
+- `config/recommendation_config.yaml` - Recommendation configuration
 - `data/01_raw/assignment_data.json` - Input dataset
 
 ## ❓ **Troubleshooting**
